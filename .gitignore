@@ -6,11 +6,7 @@ renpy_warp*
 
 .vscode/
 
-*/game/audio/
-*/game/gui/
-*/game/images/
 */game/saves/
-*/game/res/
 */game/cache/
 
 # Byte-compiled / optimized / DLL files
