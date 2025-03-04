@@ -1,2 +1,2 @@
 # Freesound.org
-define audio.thunder = "audio/sound/thunder.wav"
+define audio.thunder = "res/audio/sound/thunder.wav"

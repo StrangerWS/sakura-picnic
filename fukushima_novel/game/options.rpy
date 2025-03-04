@@ -62,7 +62,7 @@ define config.has_voice = False
 ## проигрываться в главном меню. Этот файл продолжит проигрываться во время
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
-define config.main_menu_music = "audio/music/cry-of-the-land.mp3"
+define config.main_menu_music = "res/audio/music/cry-of-the-land.mp3"
 
 
 ## Переходы ####################################################################
@@ -153,7 +153,7 @@ define config.save_directory = "fukushima_novel-1740063957"
 ##
 ## Иконка, показываемая на панели задач или на dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "res/gui/window_icon.png"
 
 
 ## Настройка Дистрибутива ######################################################
