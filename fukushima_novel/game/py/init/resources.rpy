@@ -14,3 +14,4 @@ init -998 python:
 # VisualFX
 init:
     $ flash = Fade(.25, 0, .75, color="#fff")
+    $ flash_red = Fade(.35, 0, .35, color="#f00")

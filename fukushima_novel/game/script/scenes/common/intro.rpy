@@ -1,8 +1,5 @@
 label intro:
 
-    stop music fadeout 5
-    pause 3
-
     play music sudden_awakening_loop fadein 3
     scene bg ext_intro_under_the_sakura with Dissolve(3)
 
