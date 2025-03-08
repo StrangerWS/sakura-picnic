@@ -33,33 +33,46 @@ label fight_testing:
 
     "Oh no! There are two of them!"
 
-    "1"
-    call damageGang1
-    "2"
-    call damageGang2
-    "3"
-    call damageGang2
-    "4"
-    call damagePlayer
+    while len(enemies) > 0 and playerActor.currentHp > 0:
+        menu attack_choose:
+            "Attack Left":
+                call damageGang1
+            "Attack Right":
+                call damageGang2
+        call try_attack_gang1
+        call try_attack_gang2
 
-    "Ouch!"
     return
 
+label try_attack_gang1:
+    if renpy.random.random() < 0.2:
+        $ gang1Actor.doDamage(playerActor)
+        play sound hit_hard 
+        hide black with flash_red
+    return
+
+label try_attack_gang2:
+    if renpy.random.random() < 0.2:
+        $ gang2Actor.doDamage(playerActor)
+        play sound hit_hard 
+        hide black with flash_red
+    return
 
 label damageGang1:
     $ playerActor.doDamage(gang1Actor)
     show gang angry at hit_effect
     play sound hit
+
+    if (gang1Actor.currentHp == 0):
+        $ enemies.remove(gang1Actor)
+        hide gang with easeoutbottom
     return
 
 label damageGang2:
     $ playerActor.doDamage(gang2Actor)
     show gang2 angry at hit_effect
     play sound hit
-    return
-
-label damagePlayer:
-    $ gang1Actor.doDamage(playerActor)
-    play sound hit_hard 
-    hide black with flash_red
+    if (gang2Actor.currentHp == 0):
+        $ enemies.remove(gang2Actor)
+        hide gang2 with easeoutbottom
     return

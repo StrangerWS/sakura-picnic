@@ -11,5 +11,9 @@ init -5 python:
             damageDealt = self.damage - actor.armor
             if (damageDealt >= actor.currentHp):
                 actor.currentHp = 0
+                actor.__del__
             elif damageDealt > 0:
                 actor.currentHp -= damageDealt
+
+        def __del__(self):
+            self.currentHp = 0 
