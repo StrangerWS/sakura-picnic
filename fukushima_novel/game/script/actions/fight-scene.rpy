@@ -22,8 +22,8 @@ label fight_testing:
     show gang2 angry at right with dissolve
 
     $ playerActor = BattleActor("Player", 5, 5, 1, 0)
-    $ gang1Actor = BattleActor("Gang 1", 5,5,1,0)
-    $ gang2Actor = BattleActor("Gang 2",5,5,1,0)
+    $ gang1Actor = BattleActor("Gang 1", 5, 5, 1, 0)
+    $ gang2Actor = BattleActor("Gang 2", 5, 5, 1, 0)
     $ enemies =  [gang1Actor, gang2Actor]
 
     show screen fight_hud(
@@ -34,25 +34,37 @@ label fight_testing:
     "Oh no! There are two of them!"
 
     while len(enemies) > 0 and playerActor.currentHp > 0:
-        menu attack_choose:
-            "Attack Left":
-                call damageGang1
-            "Attack Right":
-                call damageGang2
+        $ actions = fill_actions(playerActor, enemies)
+
+        $ result = renpy.display_menu(actions)
+        if result == "Gang 1":
+            call damageGang1
+        elif result == "Gang 2":
+            call damageGang2
+        elif result == "pass":
+            pass
+           
         call try_attack_gang1
         call try_attack_gang2
 
+    if (playerActor.currentHp == 0):
+        stop music fadeout 3
+        play music dark_echo fadein 3
+        show screen fight_lost(enemies, "fight_testing")
+        pause
+
+    "Phew! Not bad, strong man!"
     return
 
 label try_attack_gang1:
-    if renpy.random.random() < 0.2:
+    if renpy.random.random() < 0.2 and gang1Actor.currentHp > 0:
         $ gang1Actor.doDamage(playerActor)
         play sound hit_hard 
         hide black with flash_red
     return
 
 label try_attack_gang2:
-    if renpy.random.random() < 0.2:
+    if renpy.random.random() < 0.2 and gang2Actor.currentHp > 0:
         $ gang2Actor.doDamage(playerActor)
         play sound hit_hard 
         hide black with flash_red

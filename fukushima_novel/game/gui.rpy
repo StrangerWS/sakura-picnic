@@ -343,11 +343,11 @@ define gui.unscrollable = "hide"
 ## Экран истории показывает диалог, который игрок уже прошёл.
 
 ## Количество диалоговых блоков истории, которые Ren'Py будет хранить.
-define config.history_length = 250
+define config.history_length = 0
 
 ## Высота доступных записей на экране истории, или None, чтобы задать высоту в
 ## зависимости от производительности.
-define gui.history_height = 210
+define gui.history_height = 0
 
 ## Дополнительное пространство добавляемое между записями экрана истории.
 define gui.history_spacing = 0
